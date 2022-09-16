@@ -9,6 +9,7 @@ The repository contains leanote source and dependencies, just for developers.
 * leanote-v2.6.1
 * revel 0.18.0
 * [mgo](http://blog.labix.org/2015/01/24/readying-mgo-for-mongodb-3-0) support for mongodb-3.0
+* Russian language UI v0.1
 
 ## How to install leanote
 
