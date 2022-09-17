@@ -1,19 +1,20 @@
-# leanote-all
+# leanote-all-ru
 
-[![Build Status](https://travis-ci.org/leanote/leanote-all.svg)](https://travis-ci.org/leanote/leanote-all)
+![Language Go](https://img.shields.io/badge/Language-Go-green) ![version](https://img.shields.io/badge/v-2.6.1_ru_0.1-blue) ![Docker](https://img.shields.io/badge/Docker-black)
 
-The repository contains leanote source and dependencies, just for developers.
+Репозиторий содержит исходный код Leanote - онлайн платформы для заметок, которую можно установить на свой собственный сервер. Это форк [основной ветки проекта](https://github.com/leanote/leanote-all).
 
-## Current version
+> Leanote, Not Just A Notebook!
+
+## Текущая версия
 
 * leanote-v2.6.1
 * revel 0.18.0
-* [mgo](http://blog.labix.org/2015/01/24/readying-mgo-for-mongodb-3-0) support for mongodb-3.0
-* Russian language UI v0.1
+* [mgo](http://blog.labix.org/2015/01/24/readying-mgo-for-mongodb-3-0) поддержка для mongodb-3.0
+* Русскоязычный интерфейс (переведено примерно 75%)
 
-## How to install leanote
+## Установка
 
-* [How to install leanote](https://github.com/leanote/leanote/wiki/leanote-develop-distribution-installation-tutorial)
-* [安装leanote](https://github.com/leanote/leanote/wiki/leanote%E5%BC%80%E5%8F%91%E7%89%88%E8%AF%A6%E7%BB%86%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B)
+Самый простой способ установки - Docker.
 
-
+* [Dockerfile](https://github.com/student-proger/leanote-dockerfile)
