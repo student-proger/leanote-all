@@ -621,6 +621,8 @@ define("tinymce/pasteplugin/Clipboard", [
 			
 			if (hasImage(e)) {
 				removePasteBin();
+				// Otherwise, an image will be inserted into the content
+				e.preventDefault();
 				return;
 			}
 
