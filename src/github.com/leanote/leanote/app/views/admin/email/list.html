@@ -1,14 +1,14 @@
 {{template "admin/top.html" .}}
-<div class="m-b-md"> <h3 class="m-b-none">Email Logs</h3></div>
+<div class="m-b-md"> <h3 class="m-b-none">Журнал</h3></div>
 
 <section class="panel panel-default">
 	<div class="row wrapper">
 		<div class="col-sm-5 m-b-xs">
 			<button class="btn btn-sm btn-default bulk-send">
-				Send
+				Отправить
 			</button>
 			<button class="btn btn-sm btn-default bulk-delete">
-				Delete
+				Удалить
 			</button>
 		</div>
 		<div class="col-sm-4 m-b-xs">
@@ -18,7 +18,7 @@
 			<div class="input-group search-group">
 				<input type="text" class="input-sm form-control" placeholder="Email" id="keywords" value="{{.keywords}}" />
 				<span class="input-group-btn">
-					<button class="btn btn-sm btn-default" type="button" data-url="/adminEmail/list">Search</button>
+					<button class="btn btn-sm btn-default" type="button" data-url="/adminEmail/list">Поиск</button>
 				</span>
 			</div>
 		</div>
@@ -34,7 +34,7 @@
 					<th 
 					{{sorterTh $url "email" .sorter}}
 					>
-						Email
+						Адрес
 						<span class="th-sort">
 							<i class="fa fa-sort-down"></i>
 							<i class="fa fa-sort-up"></i>
@@ -44,7 +44,7 @@
 					<th
 					{{sorterTh $url "subject" .sorter}}
 					>
-						Subject
+						Тема
 						<span class="th-sort">
 							<i class="fa fa-sort-down"></i>
 							<i class="fa fa-sort-up"></i>
@@ -54,7 +54,7 @@
 					<th
 					{{sorterTh $url "ok" .sorter}}
 					>
-						Ok
+						Успешно
 						<span class="th-sort">
 							<i class="fa fa-sort-down"></i>
 							<i class="fa fa-sort-up"></i>
@@ -64,7 +64,7 @@
 					<th
 					{{sorterTh $url "msg" .sorter}}
 					>
-						Msg
+						Сообщение
 						<span class="th-sort">
 							<i class="fa fa-sort-down"></i>
 							<i class="fa fa-sort-up"></i>
@@ -74,7 +74,7 @@
 					<th
 					{{sorterTh $url "createdTime" .sorter}}
 					>
-						Date
+						Время
 						<span class="th-sort">
 							<i class="fa fa-sort-down"></i>
 							<i class="fa fa-sort-up"></i>
@@ -107,8 +107,8 @@
 						{{.CreatedTime|datetime}}
 					</td>
 					<td>
-						<a href="#" class="btn btn-default send-email" data-email="{{.Email}}">Send</a>
-						<a href="#" class="btn btn-default delete-email" data-id="{{.LogId.Hex}}">Delete</a>
+						<a href="#" class="btn btn-default send-email" data-email="{{.Email}}">Отправить</a>
+						<a href="#" class="btn btn-default delete-email" data-id="{{.LogId.Hex}}">Удалить</a>
 					</td>
 				</tr>
 				{{end}}
@@ -119,10 +119,10 @@
 		<div class="row">
 			<div class="col-sm-4 hidden-xs">
 				<button class="btn btn-sm btn-default bulk-send">
-					Send
+					Отправить
 				</button>
 				<button class="btn btn-sm btn-default bulk-delete">
-					Delete
+					Удалить
 				</button>
 			</div>
 			<div class="col-sm-4 text-right text-center-xs">
@@ -146,7 +146,7 @@ $(function() {
 			emails.push($(this).data("email"));
 		});
 		if(emails.length == 0) {
-			art.alert("No user");
+			art.alert("Нет пользователя");
 			return;
 		}
 		openSendEmailDialog(emails.join(","));
@@ -179,7 +179,7 @@ $(function() {
 			ids.push($(this).data("id"));
 		});
 		if(ids.length == 0) {
-			art.alert("No email");
+			art.alert("Нет email");
 			return;
 		}
 		deleteEmails(ids);

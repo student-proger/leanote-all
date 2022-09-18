@@ -76,13 +76,13 @@ tinymce.PluginManager.add('leaui_image', function(editor, url) {
 			html: GetTheHtml(),
 			buttons: [
 				{
-					text: 'Cancel',
+					text: 'Отмена',
 					onclick: function() {
 						this.parent().parent().close();
 					}
 				},
 				{
-				text: 'Insert Image',
+				text: 'Вставить',
 				subtype: 'primary',
 				onclick: function(e) {
 					var _iframe = document.getElementById('leauiIfr').contentWindow;

@@ -1,5 +1,5 @@
 {{template "admin/top.html" .}}
-<div class="m-b-md"> <h3 class="m-b-none">Register Share Note</h3></div>
+<div class="m-b-md"> <h3 class="m-b-none">Регистрация общей заметки</h3></div>
 
 <div class="row">
 
@@ -8,16 +8,16 @@
 		<section class="panel panel-default">
 			<div class="panel-body">
 				<div class="form-group">
-					<label>Shared UserId</label>
+					<label>ID пользователя</label>
 					<input type="text" class="form-control" name="registerSharedUserId" value="{{.str.registerSharedUserId}}">
 				</div>
 				<div class="form-group">
-					<label>Shared Notebooks</label>
+					<label>Обшие блокноты</label>
 					<div class="clearfix" id="notebooks">
 						{{range $notebook := .arrMap.registerSharedNotebooks}}
 						<div class="row">
 						  <div class="col-xs-8">
-							<input type="text" class="form-control" placeholder="notebookId" name="registerSharedNotebookIds[]"
+							<input type="text" class="form-control" placeholder="ID блокнота" name="registerSharedNotebookIds[]"
 								value="{{$notebook.notebookId}}"
 							>
 						  </div>
@@ -33,32 +33,32 @@
 							
 						<div class="row">
 						  <div class="col-xs-8">
-							<input type="text" class="form-control" placeholder="notebookId" name="registerSharedNotebookIds[]">
+							<input type="text" class="form-control" placeholder="ID блокнота" name="registerSharedNotebookIds[]">
 						  </div>
 						  <div class="col-xs-4">
 	  						<select class="form-control" name="registerSharedNotebookPerms[]">
-								<option value="0">Read Only</option>
-								<option value="1">Writable</option>
+								<option value="0">Только чтение</option>
+								<option value="1">Полный доступ</option>
 							</select>
 						  </div>
 						</div>
 						<div class="row">
 						  <div class="col-xs-8">
-							<input type="text" class="form-control" placeholder="notebookId" name="registerSharedNotebookIds[]">
+							<input type="text" class="form-control" placeholder="ID блокнота" name="registerSharedNotebookIds[]">
 						  </div>
 						  <div class="col-xs-4">
 	  						<select class="form-control" name="registerSharedNotebookPerms[]">
-								<option value="0">Read Only</option>
-								<option value="1">Writable</option>
+								<option value="0">Только чтение</option>
+								<option value="1">Полный доступ</option>
 							</select>
 						  </div>
 						</div>
 					</div>
-					The notebooks will shared to register user
+					Данные блокноты будут доступны зарегистрировавшимся пользователям
 				</div>
 				
 				<div class="form-group">
-					<label>Shared Notes</label>
+					<label>Общие заметки</label>
 					<div class="clearfix" id="notebooks">
 						{{range $note := .arrMap.registerSharedNotes}}
 						<div class="row">
@@ -69,8 +69,8 @@
 						  </div>
 						  <div class="col-xs-4">
 	  						<select class="form-control" name="registerSharedNotePerms[]">
-								<option value="0" {{if eq $note.perm "0"}}selected{{end}}>Read Only</option>
-								<option value="1" {{if eq $note.perm "1"}}selected{{end}}>Writable</option>
+								<option value="0" {{if eq $note.perm "0"}}selected{{end}}>Только чтение</option>
+								<option value="1" {{if eq $note.perm "1"}}selected{{end}}>Полный доступ</option>
 							</select>
 						  </div>
 						</div>
@@ -78,29 +78,29 @@
 						
 						<div class="row">
 						  <div class="col-xs-8">
-							<input type="text" class="form-control" placeholder="noteId" name="registerSharedNoteIds[]">
+							<input type="text" class="form-control" placeholder="ID заметки" name="registerSharedNoteIds[]">
 						  </div>
 						  <div class="col-xs-4">
 	  						<select class="form-control" name="registerSharedNotePerms[]">
-								<option value="0">Read Only</option>
-								<option value="1">Writable</option>
+								<option value="0">Только чтение</option>
+								<option value="1">Полный доступ</option>
 							</select>
 						  </div>
 						</div>
 						
 						<div class="row">
 						  <div class="col-xs-8">
-							<input type="text" class="form-control" placeholder="noteId" name="registerSharedNoteIds[]">
+							<input type="text" class="form-control" placeholder="ID заметки" name="registerSharedNoteIds[]">
 						  </div>
 						  <div class="col-xs-4">
 	  						<select class="form-control" name="registerSharedNotePerms[]">
-								<option value="0">Read Only</option>
-								<option value="1">Writable</option>
+								<option value="0">Только чтение</option>
+								<option value="1">Полный доступ</option>
 							</select>
 						  </div>
 						</div>
 					</div>
-					The notes will shared to register user
+					Данные заметки будут доступны зарегистрировавшимся пользователям
 				</div>
 				
 				<div class="form-group">
@@ -119,22 +119,22 @@
 						
 						<div class="row">
 						  <div class="col-xs-12">
-							<input type="text" class="form-control" name="registerCopyNoteIds[]" placeholder="noteId"/>
+							<input type="text" class="form-control" name="registerCopyNoteIds[]" placeholder="ID заметки"/>
 						  </div>
 						</div>
 						
 						<div class="row">
 						  <div class="col-xs-12">
-							<input type="text" class="form-control" name="registerCopyNoteIds[]" placeholder="noteId"/>
+							<input type="text" class="form-control" name="registerCopyNoteIds[]" placeholder="ID заметки"/>
 						  </div>
 						</div>
 					</div>
-					The notes will copy to register user
+					Данные заметки будут скопированы зарегистрировавшимся пользователям
 				</div>
 			</div>
 			
 			<footer class="panel-footer text-right bg-light lter">
-				<button type="submit" id="submit" class="btn btn-success btn-s-xs">Submit</button>
+				<button type="submit" id="submit" class="btn btn-success btn-s-xs">OK</button>
 			</footer>
 		</section>
 	</form>
@@ -162,7 +162,7 @@ $(function() {
 					if(!ret.Ok) {
 						art.alert(ret.Msg)
 					} else {
-						art.tips(ret.Msg || "Success");
+						art.tips(ret.Msg || "Успешно");
 					}
 				});
 			}

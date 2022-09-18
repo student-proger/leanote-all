@@ -15285,7 +15285,7 @@ define("tinymce/dom/Selection", [
 				var bookmark = self.lastFocusBookmark;
 
 				// Convert bookmark to range IE 11 fix
-				// life ace, 不知道会出什么错
+				// life ace, дёЌзџҐйЃ“дјље‡єд»Ђд№€й”™
 				try {
 					if (bookmark.startContainer) {
 						rng = doc.createRange();
@@ -18550,13 +18550,13 @@ define("tinymce/UndoManager", [
 			var keyCode = e.keyCode;
 
 			// life ace
-			// ctrl + shift + c, command + shift + c 代码
+			// ctrl + shift + c, command + shift + c д»Јз Ѓ
 			if((e.metaKey && e.shiftKey) || (e.ctrlKey && e.shiftKey)) {
 				return;
 			}
 
 			// life ace
-			// 在ace中回车也会加history
+			// ењЁaceдё­е›ћиЅ¦д№џдјљеЉ history
 			if(keyCode == 13 && window.LeaAce && LeaAce.nowIsInAce()) {
 				return;
 			}
@@ -18592,7 +18592,7 @@ define("tinymce/UndoManager", [
 			var keyCode = e.keyCode;
 
 			// life ace
-			// 在ace中回车也会加history
+			// ењЁaceдё­е›ћиЅ¦д№џдјљеЉ history
 			if(keyCode == 13/* && LeaAce.nowIsInAce()*/) {
 				return;
 			}
@@ -18607,7 +18607,7 @@ define("tinymce/UndoManager", [
 			}
 
 			// life ace
-			// ctrl + shift + c, command + shift + c 代码
+			// ctrl + shift + c, command + shift + c д»Јз Ѓ
 			if((e.metaKey && e.shiftKey) || (e.ctrlKey || e.shiftKey)) {
 				return;
 			}
@@ -19346,20 +19346,20 @@ define("tinymce/EnterKey", [
 			new RangeUtils(dom).normalize(rng);
 			container = rng.startContainer;
 
-			// life ace, 在ace editor下回车给ace来控制
+			// life ace, ењЁace editorдё‹е›ћиЅ¦з»™aceжќҐжЋ§е€¶
 			if(window.LeaAce && LeaAce.isInAce && window.$) {
 				var $container = $(container);
 				var aceEditorAndPre = LeaAce.isInAce($container);
 				if(aceEditorAndPre) {
 					// alert(2);
-					// 跳出aceEditor
+					// и·іе‡єaceEditor
 					if(evt.shiftKey) {
 						// alert(33);
 						// var id = $container.attr('id');
 						var aceEditor = aceEditorAndPre[0];
 						aceEditor.blur();
 						var pre = aceEditorAndPre[1];
-						// 必须要延迟
+						// еї…йЎ»и¦Ѓе»¶иїџ
 						setTimeout(function() {
 							aceEditor.blur();
 							// log('blur...')
@@ -19368,15 +19368,15 @@ define("tinymce/EnterKey", [
 							// log(newBlock.get(0));
 							rng.setStart(newBlock.get(0), 0);
 							rng.setEnd(newBlock.get(0), 0);
-							// 没用
+							// жІЎз”Ё
 							rng.selectNode(newBlock.get(0));
 							selection.setRng(rng);
-							// 再延迟
+							// е†Ќе»¶иїџ
 							setTimeout(function() {
 								selection.setRng(rng);
 							}, 10);
 
-							// TODO ... 这里
+							// TODO ... иї™й‡Њ
 							// log("why");
 							// log(rng);
 							// log(selection.getRng());
@@ -20315,22 +20315,22 @@ define("tinymce/EditorCommands", [
 					);
 
 					// life ace
-					// 插入的时候把<pre>内的标签全清掉
-					// life 把<pre></pre>间的代码拿出, 去掉标签<span>之类的
+					// жЏ’е…Ґзљ„ж—¶еЂ™жЉЉ<pre>е†…зљ„ж ‡з­ѕе…Ёжё…жЋ‰
+					// life жЉЉ<pre></pre>й—ґзљ„д»Јз Ѓж‹їе‡є, еЋ»жЋ‰ж ‡з­ѕ<span>д№‹з±»зљ„
 					// console.log(value);
-					// <p> </p><pre>xxx<span id="mce_marker" data-mce-type="bookmark">﻿​</span></pre>
-					// <p> </p><pre >xxx﻿​</pre>
+					// <p>В </p><pre>xxx<span id="mce_marker" data-mce-type="bookmark">п»ївЂ‹</span></pre>
+					// <p>В </p><pre >xxxп»ївЂ‹</pre>
 					// console.log('life');
 					// console.log(value);
 					value = value.replace(/<pre([^>]*?)>([\s\S]*?)<\/pre>/g, function(v, v1, v2) {
 						// v == "<pre>a, b, c</pre>"
 						var hasBookmark = false;
-						var b = '<span id="mce_marker" data-mce-type="bookmark">﻿​</span>';
-						if(v2.indexOf('id="mce_marker') != -1) { // mini后不是b了
+						var b = '<span id="mce_marker" data-mce-type="bookmark">п»ївЂ‹</span>';
+						if(v2.indexOf('id="mce_marker') != -1) { // miniеђЋдёЌжЇbдє†
 							hasBookmark = true;
 						}
 
-						v2 = v2.replace(/(<([^>]+)>)/gi, '').replace(/\s+$/, ''); // 把最后一个换行去掉
+						v2 = v2.replace(/(<([^>]+)>)/gi, '').replace(/\s+$/, ''); // жЉЉжњЂеђЋдёЂдёЄжЌўиЎЊеЋ»жЋ‰
 						if(hasBookmark) {
 							v2 += b;
 						}
@@ -20383,9 +20383,9 @@ define("tinymce/EditorCommands", [
 			},
 
 			// life ace
-			// life 修改
-			// 之前不是这个版本, 为什么要改, 因为考虑到在pre下粘贴后全部内容会修改(ace不友好)
-			// 这里不是改全部的内容, 对ace好
+			// life дї®ж”№
+			// д№‹е‰ЌдёЌжЇиї™дёЄз‰€жњ¬, дёєд»Ђд№€и¦Ѓж”№, е› дёєиЂѓи™‘е€°ењЁpreдё‹зІиґґеђЋе…ЁйѓЁе†…е®№дјљдї®ж”№(aceдёЌеЏ‹еҐЅ)
+			// иї™й‡ЊдёЌжЇж”№е…ЁйѓЁзљ„е†…е®№, еЇ№aceеҐЅ
 			mceInsertRawHTML: function(command, ui, value) {
 				var parser, serializer, parentNode, rootNode, fragment, args;
 				var marker, rng, node, node2, bookmarkHtml;
@@ -30674,8 +30674,8 @@ define("tinymce/Editor", [
 			/**
 			 * life ace
 			 */
-			// 先destroy之前的ace
-			if(window.LeaAce && window.LeaAce.canAce) { // 有些地方不用, 比如单页面
+			// е…€destroyд№‹е‰Ќзљ„ace
+			if(window.LeaAce && window.LeaAce.canAce) { // жњ‰дє›ењ°ж–№дёЌз”Ё, жЇ”е¦‚еЌ•йЎµйќў
 				var everContent = $(self.getBody());
 				if(everContent) {
 					LeaAce.destroyAceFromContent(everContent);
@@ -30749,7 +30749,7 @@ define("tinymce/Editor", [
 						log(e);
 					}
 				} else {
-					// 为了在firefox下有正常的显示
+					// дёєдє†ењЁfirefoxдё‹жњ‰ж­Јеёёзљ„жѕз¤є
 					$("#editorContent pre").removeClass("ace-tomorrow ace_editor");
 				}
 			}
@@ -37226,7 +37226,7 @@ define("tinymce/ui/ListBox", [
 		},
 
 		/**
-		 * disable/enable 某一list的item
+		 * disable/enable жџђдёЂlistзљ„item
 		 * leanote ace life ace
 		 * value = convert, state = true | false
 		 */
@@ -38675,7 +38675,7 @@ tinymce.ThemeManager.add('leanote', function(editor) {
 					}
 					
 					// life 4/25
-					// 在pre时都disabled
+					// ењЁpreж—¶йѓЅdisabled
 					if(itemName != "leanote_code") {// } && itemName != "formatselect") {
 						item.settings.disabledStateSelector = "pre";
 						selection.selectorChanged(item.settings.disabledStateSelector, function(state) {
@@ -38690,7 +38690,7 @@ tinymce.ThemeManager.add('leanote', function(editor) {
 					buttonGroup = null;
 					split = true;
 				} else {
-					// Factory.has()只有plugins里才有, 这Factory类就是对plugin的实例化
+					// Factory.has()еЏЄжњ‰pluginsй‡Њж‰Ќжњ‰, иї™Factoryз±»е°±жЇеЇ№pluginзљ„е®ћдѕ‹еЊ–
 					if (Factory.has(item)) {
 						item = {type: item};
 
@@ -38772,7 +38772,7 @@ tinymce.ThemeManager.add('leanote', function(editor) {
 			addToolbar(settings.toolbar || defaultToolbar);
 		}
 
-		// 这里面就含有了事件, 牛X
+		// иї™й‡Њйќўе°±еђ«жњ‰дє†дє‹д»¶, з‰›X
 //		 log(toolbars);
 
 		return toolbars;
@@ -39045,7 +39045,7 @@ tinymce.ThemeManager.add('leanote', function(editor) {
 
 		settings.content_editable = true;
 
-		// life 一直显示
+		// life дёЂз›ґжѕз¤є
 		// render();
 		setTimeout(function() {
 			render();
@@ -39074,14 +39074,14 @@ tinymce.ThemeManager.add('leanote', function(editor) {
 		var panel, resizeHandleCtrl, startSize;
 
 		// Basic UI layout
-		// iframe的父
+		// iframeзљ„з€¶
 		// life
 		// <div><iframe /></div>
 		var iframeBeforeHtml = '<div id="noteTitleDiv">' + 
             '<input name="noteTitle" id="noteTitle" placeholder="Title" ></div>';
         iframeBeforeHtml = "";
 
-        // 菜单, 这里没有
+        // иЏњеЌ•, иї™й‡ЊжІЎжњ‰
         // createMenuButtons();
 
         // toolbar [0, 1]
@@ -39095,8 +39095,8 @@ tinymce.ThemeManager.add('leanote', function(editor) {
 				{type: 'panel', name: 'iframe', layout: 'stack', classes: 'edit-area ifr', html: iframeBeforeHtml, border: '1 0 0 0'}
 			];
 
-		// 建panel, 还没用到, 只是建
-		// 要修改这里!!
+		// е»єpanel, иїжІЎз”Ёе€°, еЏЄжЇе»є
+		// и¦Ѓдї®ж”№иї™й‡Њ!!
 		panel = self.panel = Factory.create({
 			type: 'panel',
 			classes: 'tinymce',
@@ -39144,13 +39144,13 @@ tinymce.ThemeManager.add('leanote', function(editor) {
 		}
 
 		// Render before the target textarea/div
-		// 把textarea隐藏起来?
-		// 这里还把toolbar显示出来!!!!
-		// 到target显示出来
-		// .reflow()可以不要
+		// жЉЉtextareaйљђи—Џиµ·жќҐ?
+		// иї™й‡ЊиїжЉЉtoolbarжѕз¤єе‡єжќҐ!!!!
+		// е€°targetжѕз¤єе‡єжќҐ
+		// .reflow()еЏЇд»ҐдёЌи¦Ѓ
 		/*
 		ui/Control.js
-		// 先调用自己的renderHTML()
+		// е…€и°ѓз”Ёи‡Єе·±зљ„renderHTML()
 		renderBefore: function(elm) {
 			var self = this;
 
@@ -39179,13 +39179,13 @@ tinymce.ThemeManager.add('leanote', function(editor) {
 		// Add accesibility shortkuts
 		addAccessibilityKeys(panel);
 
-		// 这里
+		// иї™й‡Њ
 //		log("panel.getEl()")
 //		log(panel.getEl());
 		// return {}
 		return {
 			iframeContainer: panel.find('#iframe')[0].getEl(),
-			editorContainer: panel.getEl() // 这里不加也可以显示, 那么, 显示不是这里控制
+			editorContainer: panel.getEl() // иї™й‡ЊдёЌеЉ д№џеЏЇд»Ґжѕз¤є, й‚Јд№€, жѕз¤єдёЌжЇиї™й‡ЊжЋ§е€¶
 		};
 	}
 
@@ -39199,7 +39199,7 @@ tinymce.ThemeManager.add('leanote', function(editor) {
 		var skin = settings.skin !== false ? settings.skin || 'lightgray' : false;
 
 		/*
-		自己加载, 不要这样加载
+		и‡Єе·±еЉ иЅЅ, дёЌи¦Ѓиї™ж ·еЉ иЅЅ
 		if (skin) {
 
 			var skinUrl = settings.skin_url;
@@ -39849,7 +39849,7 @@ tinymce.PluginManager.add('link', function(editor) {
  */
 var LEAUI_DATAS = [];
 tinymce.PluginManager.add('leaui_image', function(editor, url) {
-	//当url改变时, 得到图片的大小
+	//еЅ“urlж”№еЏж—¶, еѕ—е€°е›ѕз‰‡зљ„е¤§е°Џ
 	function getImageSize(url, callback) {
 		var img = document.createElement('img');
 	
@@ -39914,19 +39914,19 @@ tinymce.PluginManager.add('leaui_image', function(editor, url) {
 			h = 365;
 		}
 		win = editor.windowManager.open({
-			title: "Image",
+			title: "Изображение",
 			width : w,
 			height : h,
 			html: GetTheHtml(),
 			buttons: [
 				{
-					text: 'Cancel',
+					text: 'Отмена',
 					onclick: function() {
 						this.parent().parent().close();
 					}
 				},
 				{
-				text: 'Insert Image',
+				text: 'Вставить',
 				subtype: 'primary',
 				onclick: function(e) {
 					var _iframe = document.getElementById('leauiIfr').contentWindow;
@@ -39937,7 +39937,7 @@ tinymce.PluginManager.add('leaui_image', function(editor, url) {
 					for(var i = 0; i < ii.length; ++i) {
 						var e = ii[i]; 
 						//console.log(e);
-						// 有些没有image
+						// жњ‰дє›жІЎжњ‰image
 						if(e.firstChild && e.firstChild.nodeName == "IMG") {
 							var img = e.firstChild;
 							var d = {};
@@ -39958,11 +39958,11 @@ tinymce.PluginManager.add('leaui_image', function(editor, url) {
 						data.src = src;
 						
 						var renderImage = function(data) {
-							// 这里, 如果图片宽度过大, 这里设置成500px
+							// иї™й‡Њ, е¦‚жћње›ѕз‰‡е®Ѕеє¦иї‡е¤§, иї™й‡Њи®ѕзЅ®ж€ђ500px
 							var back = (function(data2, i) {
 								var d = {};
 								var imgElm;
-								// 先显示loading...
+								// е…€жѕз¤єloading...
 								d.id = '__mcenew' + i;
 								d.src = "/images/loading-24.gif";
 								imgElm = dom.createHTML('img', d);
@@ -39993,8 +39993,8 @@ tinymce.PluginManager.add('leaui_image', function(editor, url) {
 							fileId = fileIds[1];
 						}
 						if(fileId) {
-							// 得到fileId, 如果这个笔记不是我的, 那么肯定是协作的笔记, 那么需要将图片copy给原note owner
-							// 博客设置中不用没有Note
+							// еѕ—е€°fileId, е¦‚жћњиї™дёЄз¬”и®°дёЌжЇж€‘зљ„, й‚Јд№€и‚Їе®љжЇеЌЏдЅњзљ„з¬”и®°, й‚Јд№€йњЂи¦Ѓе°†е›ѕз‰‡copyз»™еЋџnote owner
+							// еЌље®ўи®ѕзЅ®дё­дёЌз”ЁжІЎжњ‰Note
 							var curNote;
 							if(Note && Note.getCurNote) {
 								curNote = Note.getCurNote();
@@ -40038,13 +40038,13 @@ tinymce.PluginManager.add('leaui_image', function(editor, url) {
 		prependToContext: true
 	});
 
-	// 为解决在editor里拖动图片问题
-	// 2014/7/8 21:43 浮躁的一天终有收获
+	// дёєи§Је†іењЁeditorй‡Њж‹–еЉЁе›ѕз‰‡й—®йў
+	// 2014/7/8 21:43 жµ®иєЃзљ„дёЂе¤©з»€жњ‰ж”¶иЋ·
 	// 2015/10/16
-	// TODO 如果把编辑器内的图片拖到外面去, 还是会出现drop images to here
+	// TODO е¦‚жћњжЉЉзј–иѕ‘е™Ёе†…зљ„е›ѕз‰‡ж‹–е€°е¤–йќўеЋ», иїжЇдјље‡єзЋ°drop images to here
     var dragStart = false;
     editor.on("dragstart", function(e) {
-    	// readonly时不让drag图片
+    	// readonlyж—¶дёЌи®©dragе›ѕз‰‡
     	if (LEA.readOnly) {
 	    	e.preventDefault();
 	    	e.stopPropagation();
@@ -40056,7 +40056,7 @@ tinymce.PluginManager.add('leaui_image', function(editor, url) {
     });
 	editor.on("dragover", function(e) {
 	    if(dragStart) {
-    		// 表示编辑器内在拖动图片, 则停止冒泡
+    		// иЎЁз¤єзј–иѕ‘е™Ёе†…ењЁж‹–еЉЁе›ѕз‰‡, е€™еЃњж­ўе†’жіЎ
     		e.preventDefault();
 	    	e.stopPropagation();
     	}
@@ -40121,7 +40121,7 @@ tinymce.PluginManager.add('leaui_mindmap', function(editor, url) {
 					// return
 					km.exportData('png').then(function(data) {
 						var json = JSON.stringify(km.exportJson());
-						json = json.replace(/'/g, "Ж");
+						json = json.replace(/'/g, "Р–");
 						// console.log(json);
 						var img = '<img src="' + data + '" data-mce-src="-" data-mind-json=\'' + json + '\'>';
 						editor.insertContent(img);
@@ -41218,7 +41218,7 @@ define("tinymce/pasteplugin/Clipboard", [
 		 function copyImage(src, ids) {
 			ajaxPost("/file/copyHttpImage", {src: src}, function(ret) {
 				if(reIsOk(ret)) {
-					// 将图片替换之
+					// е°†е›ѕз‰‡ж›їжЌўд№‹
 					// var src = urlPrefix + "/" + ret.Item;
 					var src = urlPrefix + "/api/file/getImage?fileId=" + ret.Id;
 					var dom = editor.dom;
@@ -41230,8 +41230,8 @@ define("tinymce/pasteplugin/Clipboard", [
 				}
 			});
 		}
-		// 粘贴HTML
-		// 当在pre下时不能粘贴成HTML
+		// зІиґґHTML
+		// еЅ“ењЁpreдё‹ж—¶дёЌиѓЅзІиґґж€ђHTML
 		// life add text
 		function pasteHtml(html, text) {
 			var args, dom = editor.dom;
@@ -41267,19 +41267,19 @@ define("tinymce/pasteplugin/Clipboard", [
 							} catch(e) {
 							}
 						}
-						// HTML不能粘贴
-						// 其它有错误.... TODO
-						// 若有HTML, paste到其它地方有js错误
-						// 貼html时自动会删除
-						// 纯HTML编辑也会
+						// HTMLдёЌиѓЅзІиґґ
+						// е…¶е®ѓжњ‰й”™иЇЇ.... TODO
+						// и‹Ґжњ‰HTML, pasteе€°е…¶е®ѓењ°ж–№жњ‰jsй”™иЇЇ
+						// иІјhtmlж—¶и‡ЄеЉЁдјље€ й™¤
+						// зєЇHTMLзј–иѕ‘д№џдјљ
 						text = text.replace(/</g, "&lt;");
 						text = text.replace(/>/g, "&gt;");
-						// firefox下必须这个
+						// firefoxдё‹еї…йЎ»иї™дёЄ
 						editor.insertRawContent(text);
-						// 之前用insertRawContent()有问题, ace paste下, TODO
+						// д№‹е‰Ќз”ЁinsertRawContent()жњ‰й—®йў, ace pasteдё‹, TODO
 						// editor.insertContent(text);
 					} else {
-						// life 这里得到图片img, 复制到leanote下
+						// life иї™й‡Њеѕ—е€°е›ѕз‰‡img, е¤Ќе€¶е€°leanoteдё‹
 						if(!self.copyImage) {
 							editor.insertContent(html);
 						} else {
@@ -41292,7 +41292,7 @@ define("tinymce/pasteplugin/Clipboard", [
 								for(var i = 0; i < $imgs.length; ++i) {
 									var $img = $imgs.eq(i)
 									var src = $img.attr("src");
-									// 是否是外链
+									// жЇеђ¦жЇе¤–й“ѕ
 									if(src.indexOf(urlPrefix) == -1) {
 										time++;
 										var id = "__LEANOTE_IMAGE_" + time;
@@ -41440,12 +41440,12 @@ define("tinymce/pasteplugin/Clipboard", [
 		}
 
 		function inAcePrevent() {
-			// 这个事件是从哪触发的? 浏览器自带的
-			// life ace 如果在pre中, 直接返回 TODO
+			// иї™дёЄдє‹д»¶жЇд»Ће“Єи§¦еЏ‘зљ„? жµЏи§€е™Ёи‡Єеё¦зљ„
+			// life ace е¦‚жћњењЁpreдё­, з›ґжЋҐиї”е›ћ TODO
 			var ace = LeaAce.nowIsInAce();
 			if(ace) {
 				// log("in aceEdiotr 2 paste");
-				// 原来这里focus了
+				// еЋџжќҐиї™й‡Њfocusдє†
 				setTimeout(function() {
 					ace[0].focus();
 				});
@@ -41485,7 +41485,7 @@ define("tinymce/pasteplugin/Clipboard", [
 			}
 		});
 		
-		// 当url改变时, 得到图片的大小 copy from leanote_image
+		// еЅ“urlж”№еЏж—¶, еѕ—е€°е›ѕз‰‡зљ„е¤§е°Џ copy from leanote_image
 		function getImageSize(url, callback) {
 			var img = document.createElement('img');
 		
@@ -41513,9 +41513,9 @@ define("tinymce/pasteplugin/Clipboard", [
 			document.body.appendChild(img);
 		}
 		
-		// 是否有图片的粘贴, 有则删除paste bin
-		// 因为paste bin隐藏不见了, 如果不删除, 则editor_drop_paste的图片就会在这个bin下
-		// 而且, paste bin最后会删除, 导致图片不能显示
+		// жЇеђ¦жњ‰е›ѕз‰‡зљ„зІиґґ, жњ‰е€™е€ й™¤paste bin
+		// е› дёєpaste binйљђи—ЏдёЌи§Ѓдє†, е¦‚жћњдёЌе€ й™¤, е€™editor_drop_pasteзљ„е›ѕз‰‡е°±дјљењЁиї™дёЄbinдё‹
+		// иЂЊдё”, paste binжњЂеђЋдјље€ й™¤, еЇји‡ґе›ѕз‰‡дёЌиѓЅжѕз¤є
 		function hasImage(event) {
 			var items;
 			if (event.clipboardData) {
@@ -41536,11 +41536,11 @@ define("tinymce/pasteplugin/Clipboard", [
 			return false;
 		}
 		
-		// 上传图片
-		// 已过时, 不用, pasteImage在editor_drop_paste.js中用
+		// дёЉдј е›ѕз‰‡
+		// е·Іиї‡ж—¶, дёЌз”Ё, pasteImageењЁeditor_drop_paste.jsдё­з”Ё
 		function pasteImage(event) {
 			// use event.originalEvent.clipboard for newer chrome versions
-			  var items = (event.clipboardData  || event.originalEvent.clipboardData).items; // 可能有多个file, 找到属于图片的file
+			  var items = (event.clipboardData  || event.originalEvent.clipboardData).items; // еЏЇиѓЅжњ‰е¤љдёЄfile, ж‰ѕе€°е±ћдєЋе›ѕз‰‡зљ„file
 			  log(JSON.stringify(items)); // will give you the mime types
 			  // find pasted image among pasted items
 			  var blob;
@@ -41553,7 +41553,7 @@ define("tinymce/pasteplugin/Clipboard", [
 			  if (blob) {
 			    var reader = new FileReader();
 			    reader.onload = function(event) {
-			      	// 上传之
+			      	// дёЉдј д№‹
 			      	var c = new FormData;
 				    c.append("from", "pasteImage");
 				    c.append("file", blob);
@@ -41562,22 +41562,22 @@ define("tinymce/pasteplugin/Clipboard", [
 				    // d = $.ajaxSettings.xhr();
 				    // d.withCredentials = i;var d = {};
 				    
-					// 先显示loading...
+					// е…€жѕз¤єloading...
 					var editor = tinymce.EditorManager.activeEditor; 
 					var dom = editor.dom;
 					var d = {};						
 					d.id = '__mcenew';
-					d.src = "http://leanote.com/images/loading-24.gif"; // 写死了
+					d.src = "http://leanote.com/images/loading-24.gif"; // е†™ж­»дє†
 					editor.insertContent(dom.createHTML('img', d));
 					var imgElm = dom.get('__mcenew');
 				    $.ajax({url: "/file/pasteImage", contentType:false, processData:false , data: c, type: "POST"}
 				    	).done(function(re) {
 				    		if(!re || typeof re != "object" || !re.Ok) {
-				    			// 删除
+				    			// е€ й™¤
 				    			dom.remove(imgElm);
 				    			return;
 				    		}
-				    		// 这里, 如果图片宽度过大, 这里设置成500px
+				    		// иї™й‡Њ, е¦‚жћње›ѕз‰‡е®Ѕеє¦иї‡е¤§, иї™й‡Њи®ѕзЅ®ж€ђ500px
 							var urlPrefix = UrlPrefix; // window.location.protocol + "//" + window.location.host;
 							var src = urlPrefix + "/file/outputImage?fileId=" + re.Id;
 							getImageSize(src, function(wh) {
@@ -42543,7 +42543,7 @@ expose(["tinymce/pasteplugin/Utils","tinymce/pasteplugin/WordFilter"]);
 				}
 			}).renderTo().reflow();
 			
-			// 立即到最右
+			// з«‹еЌіе€°жњЂеЏі
 			win.moveTo($('body').width()-$('.mce-find-replace-ctn').width(), 60)
 		}
 
@@ -42790,7 +42790,7 @@ tinymce.PluginManager.add('leanote_nav', function(editor) {
     		return;
     	}
     	preBody = html;
-		// 构造一棵树
+		// жћ„йЂ дёЂжЈµж ‘
 		// {"h1-title":{h2-title:{}}}
 		var tree = [];//[{title: "xx", children:[{}]}, {title:"xx2"}];
 		var hs = $con.find("h1,h2,h3,h4,h5,h6").toArray();
@@ -42798,7 +42798,7 @@ tinymce.PluginManager.add('leanote_nav', function(editor) {
 		for(var i = 0; i < hs.length; ++i) {
 			var text = $(hs[i]).text(); 
 			var tagName = hs[i].tagName.toLowerCase();
-			// scrollTo在page.js中定义
+			// scrollToењЁpage.jsдё­е®љд№‰
 			titles += '<li class="nav-' + tagName + '"><a data-a="' + tagName + '-' + encodeURI(text)+'" onclick="scrollTo(this, \'' + tagName + '\', \'' + text + '\')">' + text + '</a></li>';
 		}
 		titles += "</ul>";
@@ -42807,7 +42807,7 @@ tinymce.PluginManager.add('leanote_nav', function(editor) {
 			$("#leanoteNavContent").html("&nbsp; Nothing...");
 		}
 		
-		// 这里, resize Height
+		// иї™й‡Њ, resize Height
 		var curH = $("#leanoteNavContent").height();
 		var pH = $("#editorContent").height()-29;
 		if(curH > pH) {	
@@ -42818,16 +42818,16 @@ tinymce.PluginManager.add('leanote_nav', function(editor) {
     var lastResizeTime = null;
     editor.on('init', function() {
      	window.setTimeout(function() {
-  			// 最开始时加载
+  			// жњЂејЂе§‹ж—¶еЉ иЅЅ
   			genNav();
   			editor.on('setcontent beforeadd undo paste', genNav);
   			
-  			// 这里, 以前是keydown, 太频繁
+  			// иї™й‡Њ, д»Ґе‰ЌжЇkeydown, е¤Єйў‘з№Ѓ
 	        editor.on('ExecCommand', function(e) {
 	             genNav();
 	        });
 	        
-	        // 为了把下拉菜单关闭
+	        // дёєдє†жЉЉдё‹ж‹‰иЏњеЌ•е…ій—­
 	        editor.on("click", function(e) {
 	        	genNav();
 	        	$("body").trigger("click");
@@ -42846,10 +42846,10 @@ tinymce.PluginManager.add('leanote_code', function(editor, url) {
 	var me = this;
 	var ed = editor;
 
-	// clearUndo没必要, 支持
+	// clearUndoжІЎеї…и¦Ѓ, ж”ЇжЊЃ
 	// depreciated
 	function clearUndo() {
-		// 必须要setTimeout
+		// еї…йЎ»и¦ЃsetTimeout
 		ed.undoManager.clear();
 		setTimeout(function() {
 			ed.undoManager.clear();
@@ -42863,7 +42863,7 @@ tinymce.PluginManager.add('leanote_code', function(editor, url) {
 		if(typeof html == "object") {
 			html = $(html).html();
 		}
-		// 先<br />=>\n, 再<p>=>\n, 再把连续的两个\n => 1个\n
+		// е…€<br />=>\n, е†Ќ<p>=>\n, е†ЌжЉЉиїћз»­зљ„дё¤дёЄ\n => 1дёЄ\n
 		return html.replace(/\<br *\/*\>/gi,"\n").replace(/<\/(p|li|div|ul|ol|hr)>/, "\n").replace(/(<([^>]+)>)/gi, "").replace(/\n\n/g, "\n");
 	}
 	function html2BreakLineForPre(html) {
@@ -42876,8 +42876,8 @@ tinymce.PluginManager.add('leanote_code', function(editor, url) {
 		return html.replace(/\n/g, "<br />"); // .replace(/\<br *\/*\>/gi,"\n").replace(/<\/(p|li|div|ul|ol|hr)>/, "\n").replace(/(<([^>]+)>)/gi, "");
 	}
 
-	// 在toggle成pre或ace时
-	// 最后没有元素, 或者元素不是p, 则在最后插入之
+	// ењЁtoggleж€ђpreж€–aceж—¶
+	// жњЂеђЋжІЎжњ‰е…ѓзґ , ж€–иЂ…е…ѓзґ дёЌжЇp, е€™ењЁжњЂеђЋжЏ’е…Ґд№‹
 	function insertPIfNotExists() {
 		var children = $('#editorContent').children();
 		var lastChild = children && children.length > 0 ? children[children.length - 1] : null;
@@ -42886,7 +42886,7 @@ tinymce.PluginManager.add('leanote_code', function(editor, url) {
 		}
 	}
 
-	// brush 刷子
+	// brush е€·е­ђ
 	function toggleCode(brush) {
 		if (LEA.readOnly) {
 			return;
@@ -42894,8 +42894,8 @@ tinymce.PluginManager.add('leanote_code', function(editor, url) {
 		ed = tinymce.activeEditor;
 		var node = ed.selection.getNode();
 
-		var selectedContent = ed.selection.getContent(); // 包含了html标签
-		// var everBookmark = ed.selection.getBookmark(); // 光标, 为了处理后重新定位到那个位置
+		var selectedContent = ed.selection.getContent(); // еЊ…еђ«дє†htmlж ‡з­ѕ
+		// var everBookmark = ed.selection.getBookmark(); // е…‰ж ‡, дёєдє†е¤„зђ†еђЋй‡Ќж–°е®љдЅЌе€°й‚ЈдёЄдЅЌзЅ®
 		var text;
 
 		var aceEditorAndPre = LeaAce.isInAce(node);
@@ -42906,8 +42906,8 @@ tinymce.PluginManager.add('leanote_code', function(editor, url) {
 			$pre = aceEditorAndPre[1];
 		}
 
-		// 去掉
-		// 当pre->text时会有遗留, 这里干脆清除之
+		// еЋ»жЋ‰
+		// еЅ“pre->textж—¶дјљжњ‰йЃ—з•™, иї™й‡Ње№Іи„†жё…й™¤д№‹
 		$('#editorContent .toggle-raw').remove();
 
 		var brushClasses = 'class="brush:' + brush + '"';
@@ -42922,7 +42922,7 @@ tinymce.PluginManager.add('leanote_code', function(editor, url) {
 			if(aceEditor) {
 				aceEditor.session.setMode("ace/mode/" + brush);
 			}
-			// 不支持ace的情况
+			// дёЌж”ЇжЊЃaceзљ„жѓ…е†µ
 			if(!$pre && node.nodeName  == "PRE") {
 				$pre = $(node);
 			}
@@ -42931,12 +42931,12 @@ tinymce.PluginManager.add('leanote_code', function(editor, url) {
 				$pre.removeClass(everBrush).addClass("brush:" + brush);
 				return;
 			}
-		// 不能把BODY转成pre
+		// дёЌиѓЅжЉЉBODYиЅ¬ж€ђpre
 		} else if(brush && (node.nodeName == "BODY" || $(node).attr('id') == 'editorContent')) {
 			return;
 		}
 
-		// 对于不支持ace的情况
+		// еЇ№дєЋдёЌж”ЇжЊЃaceзљ„жѓ…е†µ
 		if(!LeaAce.canAce()) {
 			if(node.nodeName != "PRE") {
 				node = $(node).closest("pre").get(0);
@@ -42953,14 +42953,14 @@ tinymce.PluginManager.add('leanote_code', function(editor, url) {
 					text = $.trim($(selectedContent).text());
 				} catch(e) {
 				}
-				// 可能不是一个完整的html, 可能是一个文本此时.html()无
+				// еЏЇиѓЅдёЌжЇдёЂдёЄе®Њж•ґзљ„html, еЏЇиѓЅжЇдёЂдёЄж–‡жњ¬ж­¤ж—¶.html()ж— 
 				if(!text) {
 					text = $.trim(selectedContent);
 				}
 				var pre = null;
 				var id = LeaAce.getAceId();
 				if(text) {
-					// 不是, 那么替换成<pre>
+					// дёЌжЇ, й‚Јд№€ж›їжЌўж€ђ<pre>
 					text = html2BreakLineForPre(text);
 					pre = '<pre id="' + id + '" ' + brushClasses + '>' + text + '</pre>';
 					ed.insertContent(pre);
@@ -42988,18 +42988,18 @@ tinymce.PluginManager.add('leanote_code', function(editor, url) {
 			return;
 		}
 
-		// 支持ace情况
+		// ж”ЇжЊЃaceжѓ…е†µ
 
-		// 如果是用户选择了某内容, 其父<pre>不会包含进来, 此时还是要判断node的父是否是PRE, 
+		// е¦‚жћњжЇз”Ёж€·йЂ‰ж‹©дє†жџђе†…е®№, е…¶з€¶<pre>дёЌдјљеЊ…еђ«иї›жќҐ, ж­¤ж—¶иїжЇи¦Ѓе€¤ж–­nodeзљ„з€¶жЇеђ¦жЇPRE, 
 		var id = LeaAce.getAceId(); 
 
-		// 防止ace处理时添加额外的历史
+		// йІж­ўaceе¤„зђ†ж—¶ж·»еЉ йўќе¤–зљ„еЋ†еЏІ
 		// tinymce.activeEditor.undoManager.add();
 		LeaAce.disableAddHistory();
 
 		if(aceEditor) {
 			var val = aceEditor.getValue();
-			// TODO 实体转成&lt;&rg;
+			// TODO е®ћдЅ“иЅ¬ж€ђ&lt;&rg;
 			val = val.replace(/</g, "&lt;");
 			val = val.replace(/>/g, "&gt;");
 			val = val.replace(/\n/g, "<br />");
@@ -43008,7 +43008,7 @@ tinymce.PluginManager.add('leanote_code', function(editor, url) {
 		} else {
 			if(node.nodeName == "PRE") {
 				// $(node).find('.toggle-raw').remove();
-				// 表示在pre下, 但不是aceEditor, toggle后的
+				// иЎЁз¤єењЁpreдё‹, дЅ†дёЌжЇaceEditor, toggleеђЋзљ„
 				var $pre = $(node);
 				var val = $pre.html();
 				if(val) {
@@ -43023,13 +43023,13 @@ tinymce.PluginManager.add('leanote_code', function(editor, url) {
 			}
 
 			if(text) {
-				// 不是, 那么替换成<pre>
+				// дёЌжЇ, й‚Јд№€ж›їжЌўж€ђ<pre>
 				// log(text);
 				text = html2BreakLine(text);
 				// log(text);
 				ed.insertContent('<pre id="' + id + '" ' + brushClasses + '>' + text + '</pre>');
 			} else {
-				// 不是, 那么替换成<pre>
+				// дёЌжЇ, й‚Јд№€ж›їжЌўж€ђ<pre>
 				text = html2BreakLine(node);
 				$(node).replaceWith("<pre id='" + id  + "'" + brushClasses + ">" + text + "</pre>");
 			}
@@ -43048,15 +43048,15 @@ tinymce.PluginManager.add('leanote_code', function(editor, url) {
 		LeaAce.resetAddHistory();
 	};
 		
-	// 切换代码
-	// 用户选择了/用户光标所在行
+	// е€‡жЌўд»Јз Ѓ
+	// з”Ёж€·йЂ‰ж‹©дє†/з”Ёж€·е…‰ж ‡ж‰ЂењЁиЎЊ
 	
 	//----------------
 	function createListBoxChangeHandler() {
 		return function() {
 			var self = this;
 			editor.on('nodeChange', function() {
-				// 得到node
+				// еѕ—е€°node
 				var value = null;
 				try {
 					var node = editor.selection.getNode();
@@ -43126,7 +43126,7 @@ tinymce.PluginManager.add('leanote_code', function(editor, url) {
 			values: items,
 			fixedWidth: true,
 			onselect: function(e) {
-				// 这里, change或不转成code
+				// иї™й‡Њ, changeж€–дёЌиЅ¬ж€ђcode
 				if (e.control.settings.value) {
 					toggleCode(e.control.settings.value);
 				}
@@ -43150,13 +43150,13 @@ tinymce.PluginManager.add('leanote_code', function(editor, url) {
 			tooltip: 'Toggle ace with raw html',
 			active: LeaAce.isAce === false,
 			onclick: function() {
-				// 表示之前是ace->pre状态
-				// 现在转成ace
+				// иЎЁз¤єд№‹е‰ЌжЇace->preзЉ¶жЂЃ
+				// зЋ°ењЁиЅ¬ж€ђace
 				if(LeaAce.isAce === false) {
 					this.active(false);
 					LeaAce.isAce = true;
 					LeaAce.initAceFromContent(editor);
-				// 转成pre
+				// иЅ¬ж€ђpre
 				} else {
 					this.active(true);
 					LeaAce.allToPre(editor);
@@ -43167,8 +43167,8 @@ tinymce.PluginManager.add('leanote_code', function(editor, url) {
 	}
 
     //----------------
-	// 切换代码
-	// 用户选择了/用户光标所在行
+	// е€‡жЌўд»Јз Ѓ
+	// з”Ёж€·йЂ‰ж‹©дє†/з”Ёж€·е…‰ж ‡ж‰ЂењЁиЎЊ
 	ed.addCommand('toggleCode', toggleCode);
     
     ed.addShortcut('ctrl+shift+c', '', 'toggleCode');
@@ -43177,7 +43177,7 @@ tinymce.PluginManager.add('leanote_code', function(editor, url) {
 	// life
 	if(LeaAce.canAce()) {
 		editor.on('keydown', function(e) {
-			// paste时
+			// pasteж—¶
 			var ace = LeaAce.nowIsInAce();
 			if(ace) {
 				setTimeout(function() {
@@ -43191,7 +43191,7 @@ tinymce.PluginManager.add('leanote_code', function(editor, url) {
 			var keyCode = e.keyCode;
 			if(keyCode == 8 || keyCode == 46) {
 				// alert(keyCode);
-				// 如果之前是Ace
+				// е¦‚жћњд№‹е‰ЌжЇAce
 				// var node = editor.selection.getNode();
 				// log(node);
 				log(e);
@@ -43212,7 +43212,7 @@ tinymce.PluginManager.add('leanote_code', function(editor, url) {
                     ed.execCommand('mceInsertHTML', false, '\x09'); // inserts tab
 				} else {
 				*/
-				// 如果是在li下的, 就不要控制
+				// е¦‚жћњжЇењЁliдё‹зљ„, е°±дёЌи¦ЃжЋ§е€¶
 				var node = ed.selection.getNode();
 				if (node && (node.nodeName == 'LI' || $(node.closest('li')).length > 0)) {
 					return true;
@@ -43221,10 +43221,10 @@ tinymce.PluginManager.add('leanote_code', function(editor, url) {
 	            e.preventDefault();
 	            e.stopPropagation();   			
 	            return false;
-                // ed.execCommand('mceInsertHTML', false, "&nbsp;&nbsp;&nbsp;&nbsp;"); // inserts 空格
+                // ed.execCommand('mceInsertHTML', false, "&nbsp;&nbsp;&nbsp;&nbsp;"); // inserts з©єж ј
 				// }
     		} else {
-    			// delete 4 个空格
+    			// delete 4 дёЄз©єж ј
 				// ed.execCommand('Outdent');
     		}
        }
