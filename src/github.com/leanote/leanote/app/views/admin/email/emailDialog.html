@@ -8,9 +8,9 @@ overflow-y: scroll;">
 			<header class="panel-heading font-bold">Email</header>
 			<div class="panel-body">
 				<div class="form-group">
-					<label>Email List</label>
+					<label>Список адресов Email</label>
 					<textarea type="text" rows="10" class="form-control" name="emails">{{.emailsNl}}</textarea>
-					input email line by line
+					По одному адресу в строке
 				</div>
 				
 				<div class="form-group">
@@ -26,19 +26,19 @@ overflow-y: scroll;">
 				</div>
 				
 				<div class="form-group">
-					<label>Subject</label>
+					<label>Тема</label>
 					<input type="text" class="form-control" id="latestEmailSubject" name="latestEmailSubject" value="{{$.str.latestEmailSubject}}">
 				</div>
 				
 				<div class="form-group">
-					<label>Body</label>
+					<label>Текст письма</label>
 					<textarea type="text" rows="10" id="latestEmailBody" class="form-control" name="latestEmailBody">{{$.str.latestEmailBody}}</textarea>
 				</div>
-				<label class="checkbox-inline"> <input type="checkbox" id="saveAsOldEmail" name="saveAsOldEmail" value="1"> Save As Old Email </label>
+				<label class="checkbox-inline"> <input type="checkbox" id="saveAsOldEmail" name="saveAsOldEmail" value="1"> Сохранить шаблон </label>
 			</div>
 			
 			<footer class="panel-footer text-right bg-light lter">
-				<button type="submit" id="submitEmail" class="btn btn-success btn-s-xs">Submit</button>
+				<button type="submit" id="submitEmail" class="btn btn-success btn-s-xs">Отправить</button>
 			</footer>
 		</section>
 	</form>
@@ -68,7 +68,7 @@ $(function() {
 			if(!ret.Ok) {
 				art.alert(ret.Msg)
 			} else {
-				art.tips("Success");
+				art.tips("Успешно");
 			}
 		});
 	});
